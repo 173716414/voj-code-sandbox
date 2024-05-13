@@ -1,7 +1,15 @@
 package com.victor.vojcodesandbox.controller;
 
+import com.victor.vojcodesandbox.JavaCodeSandboxTemplate;
+import com.victor.vojcodesandbox.JavaNativeCodeSandbox;
+import com.victor.vojcodesandbox.model.ExecuteCodeRequest;
+import com.victor.vojcodesandbox.model.ExecuteCodeResponse;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /*
  *Author：Victor_htq
@@ -14,8 +22,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController("/")
 public class MainController {
 
+    @Resource
+    private JavaNativeCodeSandbox javaNativeCodeSandbox;
     @GetMapping("/health")
     public String healthCheck() {
         return "ok";
+    }
+
+    @PostMapping("/executeCode")
+    ExecuteCodeResponse executeCode(@RequestBody ExecuteCodeRequest executeCodeRequest) {
+        if (executeCodeRequest == null) {
+            throw new RuntimeException("请求参数为空");
+        }
+        return javaNativeCodeSandbox.executeCode(executeCodeRequest);
     }
 }

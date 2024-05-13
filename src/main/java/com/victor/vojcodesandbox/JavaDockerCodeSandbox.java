@@ -11,6 +11,7 @@ import com.github.dockerjava.core.command.ExecStartResultCallback;
 import com.victor.vojcodesandbox.model.ExecuteCodeRequest;
 import com.victor.vojcodesandbox.model.ExecuteCodeResponse;
 import com.victor.vojcodesandbox.model.ExecuteMessage;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StopWatch;
 
 import java.io.Closeable;
@@ -22,6 +23,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+@Component
 public class JavaDockerCodeSandbox extends JavaCodeSandboxTemplate {
     private static final long TIME_OUT = 5000L;
 

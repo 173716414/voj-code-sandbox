@@ -9,6 +9,7 @@ import com.victor.vojcodesandbox.model.ExecuteCodeResponse;
 import com.victor.vojcodesandbox.model.ExecuteMessage;
 import com.victor.vojcodesandbox.model.JudgeInfo;
 import com.victor.vojcodesandbox.utils.ProcessUtils;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.nio.charset.StandardCharsets;
@@ -20,6 +21,7 @@ import java.util.UUID;
 /**
  * java原生实现，直接复用模板方法
  */
+@Component
 public class JavaNativeCodeSandbox extends JavaCodeSandboxTemplate {
     @Override
     public File saveCodeToFile(String code) {
